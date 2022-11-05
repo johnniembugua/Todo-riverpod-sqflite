@@ -26,7 +26,7 @@ class MyApp extends ConsumerWidget {
     print(isDarkTheme);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'My Todo',
       theme: Themes.light,
       darkTheme: Themes.dark,
       themeMode: isDarkTheme ? ThemeMode.dark : ThemeMode.light,

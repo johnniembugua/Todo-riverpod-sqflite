@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 class NotifyHelper {
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -10,7 +10,7 @@ class NotifyHelper {
 
   initializeNotification() async {
     tz.initializeTimeZones();
-    final DarwinInitializationSettings initializationSettingsIOS =
+    const DarwinInitializationSettings initializationSettingsIOS =
         DarwinInitializationSettings(
       requestSoundPermission: false,
       requestBadgePermission: false,
@@ -18,10 +18,10 @@ class NotifyHelper {
       //onDidReceiveLocalNotification: onDidReceiveLocalNotification
     );
 
-    final AndroidInitializationSettings initializationSettingsAndroid =
+    const AndroidInitializationSettings initializationSettingsAndroid =
         AndroidInitializationSettings("appicon");
 
-    final InitializationSettings initializationSettings =
+    const InitializationSettings initializationSettings =
         InitializationSettings(
       iOS: initializationSettingsIOS,
       android: initializationSettingsAndroid,
@@ -91,7 +91,7 @@ class NotifyHelper {
         channelDescription: 'your channel description',
         importance: Importance.max,
         priority: Priority.high);
-    var iOSPlatformChannelSpecifics = DarwinNotificationDetails();
+    var iOSPlatformChannelSpecifics = const DarwinNotificationDetails();
     var platformChannelSpecifics = NotificationDetails(
         android: androidPlatformChannelSpecifics,
         iOS: iOSPlatformChannelSpecifics);

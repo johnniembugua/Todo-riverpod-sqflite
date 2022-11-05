@@ -10,6 +10,7 @@ import 'package:todo/services/theme_services.dart';
 import 'package:todo/ui/theme.dart';
 import 'package:todo/ui/widgets/button.dart';
 
+import '../models/task.dart';
 import 'add_task_bar.dart';
 import 'widgets/task_tile.dart';
 
@@ -71,7 +72,7 @@ class _HomePageUiState extends ConsumerState<HomePageUi> {
                           children: [
                             GestureDetector(
                               onTap: () {
-                                print("tapped");
+                                _showBottomSheet(context, task);
                               },
                               child: TaskTile(task),
                             )
@@ -88,6 +89,29 @@ class _HomePageUiState extends ConsumerState<HomePageUi> {
         child: CircularProgressIndicator(),
       );
     }));
+  }
+
+  _showBottomSheet(BuildContext context, Task task) {
+    showModalBottomSheet(
+        clipBehavior: Clip.hardEdge,
+        // backgroundColor: Colors.transparent,
+        barrierColor: Colors.transparent,
+        context: context,
+        builder: (context) {
+          return Container(
+            color: Colors.transparent,
+            child: Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 10,
+              ),
+              decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20))),
+            ),
+          );
+        });
   }
 
   _addDateBar() {
