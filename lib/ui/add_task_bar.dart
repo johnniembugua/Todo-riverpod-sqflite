@@ -275,6 +275,7 @@ class _AddTaskPageState extends ConsumerState<AddTaskPage> {
     } else if (isStartTime == true) {
       setState(() {
         _startTime = formmattedTime;
+        print(_startTime);
       });
     } else if (isStartTime == false) {
       setState(() {

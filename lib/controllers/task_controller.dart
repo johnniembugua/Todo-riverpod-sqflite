@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:todo/db/db_helper.dart';
 
@@ -28,5 +27,9 @@ class TaskController {
 
   void delete(Task task) async {
     await DBHelper.delete(task);
+  }
+
+  void update(Task task) async {
+    await DBHelper.update(task.id!);
   }
 }

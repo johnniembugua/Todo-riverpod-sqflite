@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:get/get.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo/services/theme_services.dart';
 import 'package:todo/ui/theme.dart';
@@ -24,7 +25,7 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final bool isDarkTheme = ref.watch(appThemeProvider).getTheme();
     print(isDarkTheme);
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'My Todo',
       theme: Themes.light,
