@@ -7,6 +7,7 @@ import 'package:timezone/data/latest.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 import '../models/task.dart';
+import '../ui/notified_page.dart';
 
 class NotifyHelper {
   FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -70,11 +71,7 @@ class NotifyHelper {
     } else {
       debugPrint('notification done');
     }
-    Get.to(() => Scaffold(
-          body: Center(
-            child: Text(payload.toString()),
-          ),
-        ));
+    Get.to(() => NotifiedPage(label: payload!));
     // await Navigator.push(
     //   context,
     //   MaterialPageRoute<void>(
@@ -115,7 +112,7 @@ class NotifyHelper {
       title,
       body,
       platformChannelSpecifics,
-      payload: 'It could be anything you pass',
+      payload: "$title|$body",
     );
   }
 
@@ -132,7 +129,7 @@ class NotifyHelper {
               'your channel id', 'your channel name',
               channelDescription: 'your channel description')),
       androidAllowWhileIdle: true,
-      payload: "Anything you pass",
+      payload: "${task.title}|${task.note}|",
       uiLocalNotificationDateInterpretation:
           UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time,
